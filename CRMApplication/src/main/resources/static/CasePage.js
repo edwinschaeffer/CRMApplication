@@ -1,12 +1,16 @@
 function callServer() {
-	alert("called");
 	let plId = $("#plID").val();
 	$.ajax({
 		method: "GET",
-		url: "/callServer",
+		url: "/callServerJPA",
 		data: { plId: plId }
 	})
-		.done(function(msg) {
-			alert("Data Saved: " + msg);
-		});
+     .done(function(msg) {
+			const jsonObj = JSON.parse(msg);
+			console.log(jsonObj);
+			Object.entries(jsonObj).forEach(([key, val]) => {
+				$("#" + key).val(val);
+			});
+			$("#url").html(jsonObj.website);
+	  });
 }

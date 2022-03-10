@@ -11,7 +11,8 @@ import dao.HomePageDAO;
 public class HomePageController {
  
 	private HomePageDAO hpDAO;
-	
+	// No @Autowired needed because when this Bean is scanned Spring automatically knows
+	// to inject the dependency if there's a constructor
 	public HomePageController(HomePageDAO hpDAO) {
 		this.hpDAO = hpDAO;
 	}
@@ -20,10 +21,5 @@ public class HomePageController {
 		System.out.println("getHomePage begin");
         model.addAttribute("leads", hpDAO.getListOfSomePLsMyBatis());
 		return "casePage.html";
-	}
-	@RequestMapping("/callServer")
-	public @ResponseBody String getPLbyId() {
-		System.out.println("called getPLbyId");
-		return "success";
 	}
 }

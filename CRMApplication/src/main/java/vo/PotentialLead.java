@@ -1,9 +1,40 @@
 package vo;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "POTENTIAL_LEADS")
 public class PotentialLead {
-	private String id, ageOfBusiness, city, company, convertedDate, convertedLeadId, country, area, employeeCount, industry,
-	                 phone, potentialLeadLocationLatitude, potentialLeadLocationLongitude, sector, state, status, street, 
-	                 website, zipCode;
+	@Id
+	@Column(nullable = false, name = "ID")
+	private String id;
+	@Column(nullable = true, name = "AGE_OF_BUSINESS")
+	private String ageOfBusiness;
+	private String city;
+	private String company;
+	private String convertedDate;
+	private String convertedLeadId;
+	private String country;
+	private String area;
+	@Column(nullable = true, name = "EMPLOYEE_COUNT")
+	private String employeeCount;
+	private String industry;
+	private String phone;
+	@Column(nullable = true, name = "POTENTIAL_LEAD_LOCATION__LATITUDE__S")
+	private String potentialLeadLocationLatitude;
+	@Column(nullable = true, name = "POTENTIAL_LEAD_LOCATION__LONGITUDE__S")
+	private String potentialLeadLocationLongitude;
+    private String sector;
+    private String state;
+    private String status;
+    private String street;
+    private String website;
+    @Column(nullable = true, name = "ZIP_CODE")
+    private String zipCode;
+	
 
 	public String getId() {
 		return id;
